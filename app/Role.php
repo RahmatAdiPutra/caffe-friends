@@ -1,0 +1,23 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Role extends Model {
+	public function permissions() {
+		return $this->belongsToMany(Permission::class, 'role_permissions');
+	}
+	public function rolePermissions() {
+		return $this->hasMany(RolePermission::class);
+	}
+
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array
+	 */
+	protected $fillable = [
+		'name',
+	];
+}
